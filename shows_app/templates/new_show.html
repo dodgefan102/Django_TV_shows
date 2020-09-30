@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create</title>
+    <link rel="stylesheet" href="../static/CSS/style.css">
+</head>
+<body>
+    <h1>Add a New Show</h1>
+    {% if messages %}
+    <ul style="list-style-type: none; color: red;"> 
+        {% for i in messages %}
+            <li {% if i.tags %} class='{{ i.tags }}' {% endif %}>{{ i }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <div class="form">
+        <form action="/shows/create" method="post">
+            {% csrf_token %}
+            <label>Title</label>
+            <input class="new_title" type="text" name='title'><br>
+            <div class='net'>
+                <label>Network</label>
+                <input type="text" name='net'>
+            </div>
+            <div class='rdate'>
+                <label>Release Date</label>
+                <input type="date" name='rdate'>
+            </div><br>
+            <label>Description (optional)</label><br>
+            <textarea name="desc" class="desc"></textarea><br>
+            <button class="create" type="submit">Create</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update</title>
+    {% load static %}
+    <link rel="stylesheet" href="../static/CSS/style.css">
+</head>
+<body>
+    <h1>Edit Show {{ show.id }}</h1>
+    {% if messages %}
+    <ul style="list-style-type: none; color: red;"> 
+        {% for i in messages %}
+            <li {% if i.tags %} class='{{ i.tags }}' {% endif %}>{{ i }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <div class="form">
+        <form action="/shows/{{ show.id }}/update" method="post">
+            {% csrf_token %}
+            <input type="hidden" value='{{ show.id }}' name="id">
+            <label>Title</label>
+            <input class="new_title" value="{{ show.title }}" type="text" name='title'><br>
+            <div class='net'>
+                <label>Network</label>
+                <input type="text" value="{{ show.network }}" name='net'>
+            </div>
+            <div class='rdate'>
+                <label>Release Date</label>
+                <input type="date" value="{{ show.release_date }}" name='rdate'>
+            </div><br>
+            <label>Description (optional)</label><br>
+            <input type="text" name="desc" value="{{ show.description }}" class="desc"><br>
+            <button class="create" type="submit">Update</button>
+        </form>
+        <a href="../{{show.id}}">Go to Show</a>
+    </div>
+
+</body>
+</html>

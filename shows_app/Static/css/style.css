@@ -1,0 +1,32 @@
+*{margin: 5px;}
+.form{
+    text-align: center;
+}
+form{
+    display: inline-block;
+    text-align: left;
+}
+
+.desc{
+    min-width: 500px;
+    min-height: 200px;
+    text-align: left;
+    padding: 0px;
+    line-height: 1;
+}
+.net{
+    display: inline-block;
+}
+.rdate{
+    display: inline-block;
+}
+.create{
+    display: inline-block;
+}
+.new_title{
+    width: 400px;
+}
+.errors{
+    color: red;
+    list-style-type: none;
+}
